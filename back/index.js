@@ -1,6 +1,6 @@
 const express=require('express');
 require('dotenv');
-
+var bodyParser = require('body-parser')
 if(process.env.NODE_ENV!="production")
 {
   require('dotenv').config();
@@ -12,6 +12,7 @@ const signp=require('./Signup/signup')
 
 
 app=express();
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/',(req,res)=>{
   res.send("working");
